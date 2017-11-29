@@ -19,7 +19,6 @@ class NetworkManager {
                          using body: [String: Any]?,
                          requestType: Constants.RequestType,
                          completion: @escaping (Data?, URLResponse?, Error?) -> Void) throws {
-        
         // Validate URL
         guard let url  = URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) else {
             throw RequestError.InvalidURL
@@ -31,8 +30,18 @@ class NetworkManager {
         
         // Set Request Header
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let accessToken = UserDefaults.standard.value(forKey: Constants.Keys.AccessToken) as? String{
-            request.setValue("ACCESS_TOKEN=\(accessToken)", forHTTPHeaderField: "Cookie")
+        if let accessToken = UserDefaults.standard.value(forKey: Constants.ResponseKeys.AccessToken) as? String {
+            
+            // Validate access token
+            if isAccessTokenValid() == false {
+                
+                // Refresh access token
+                refreshToken(for: { try? loadData(from: url.absoluteString, using: body, requestType: requestType, completion: completion) })
+                return
+            } else {
+                // Set Access Token
+                request.setValue("ACCESS_TOKEN=\(accessToken)", forHTTPHeaderField: "Cookie")
+            }
         }
         
         // Set Request Body
@@ -48,8 +57,6 @@ class NetworkManager {
         // Load Request
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            // Call Completion handler
             completion(data, response, error)
         })
         task.resume()
@@ -68,17 +75,16 @@ class NetworkManager {
         }
         
         do {
-            // Create valid json for data
+            // Create JSON
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 
-                // Validate response status code
-                guard let statusCode = NetworkManager.statusCode(for: response),
-                    statusCode == responseCode.rawValue else {
-                        completion(Result.Failure(ResponseError.InvalidResponseCode(json.values.first)))
-                        return
+                // Validate response code
+                guard let statusCode = NetworkManager.statusCode(for: response), statusCode == responseCode.rawValue else {
+                    completion(Result.Failure(ResponseError.InvalidResponseCode(json.values.first)))
+                    return
                 }
                 
-                // Callback JSON Result
+                // Callback JSON
                 completion(Result.Success(json))
             }
         }
@@ -87,11 +93,87 @@ class NetworkManager {
         }
     }
     
-    // Retrives status code for given response
+    // Retrives status code for response
     static func statusCode(for response: URLResponse?) -> Int? {
         guard let response = response as? HTTPURLResponse else {
             return nil
         }
         return response.statusCode
+    }
+    
+    // Validates access token
+    static func isAccessTokenValid() -> Bool? {
+        if let tokenTimeStamp = UserDefaults.standard.value(forKey: Constants.ResponseKeys.TokenTimestamp) as? Double {
+            let timeDifference = (Date.timeIntervalSinceReferenceDate - tokenTimeStamp) / 60 // In minutes
+            if timeDifference > 8 {
+                return false
+            } else {
+                return true
+            }
+        }
+        return nil
+    }
+    
+    // Refreshes access token and executes passed in closure
+    static func refreshToken(for closure: @escaping () -> ()) {
+        
+        // Guard resfreshToken token for request body
+        guard let resfreshToken = UserDefaults.standard.value(forKey: Constants.ResponseKeys.RefreshToken) else { return }
+        
+        // Construct request url and body
+        let url = Constants.URL.baseURL+Constants.EndPoints.RefreshAccessToken
+        let body = ["refresh_token": resfreshToken]
+        do {
+            // Load Data
+            try NetworkManager.loadData(from: url, using: body, requestType: .POST, completion: { (data, response, error) in
+                
+                // Validate response
+                NetworkManager.validate(responseCode: .Ok, for: data,and: response, completion: { (result) in
+                    do {
+                        // Update token
+                        try NetworkManager.updateToken(for: result)
+                        
+                        // Execture closure
+                        closure()
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                })
+            })
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // Updates and Stores token in user defaults
+    static func updateToken(for result: Result<Any>) throws {
+        do {
+            if let json = try result.unwrap() as? [String: Any] {
+                
+                // Store Refresh Token
+                if let refreshToken = json[Constants.ResponseKeys.RefreshToken] as? String  {
+                    UserDefaults.standard.set(refreshToken, forKey: Constants.ResponseKeys.RefreshToken)
+                }
+                
+                // Guard and Store Access Tokens
+                guard let accessToken = json[Constants.ResponseKeys.AccessToken] as? String else {
+                    throw DataError.InvalidKey(Constants.ResponseKeys.AccessToken)
+                }
+                UserDefaults.standard.set(accessToken, forKey: Constants.ResponseKeys.AccessToken)
+                UserDefaults.standard.set(Date.timeIntervalSinceReferenceDate, forKey: Constants.ResponseKeys.TokenTimestamp)
+            }
+        }
+        catch {
+            throw error
+        }
+    }
+    
+    // Removes stored tokens
+    static func removeTokens() {
+        UserDefaults.standard.removeObject(forKey: Constants.ResponseKeys.AccessToken)
+        UserDefaults.standard.removeObject(forKey: Constants.ResponseKeys.RefreshToken)
+        UserDefaults.standard.removeObject(forKey: Constants.ResponseKeys.TokenTimestamp)
     }
 }

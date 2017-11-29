@@ -22,24 +22,24 @@ class TracksVC: UITableViewController {
     }
     
     func loadData() {
-//        let userInfo = ["email": "test6@mail.com",
-//                        "password": "STar1234"]
-//
-//        UserManager.shared.login(userInfo) { (result) in
-//            do {
-//                if let user = try result.unwrap() as? User {
-//                    print(user.email)
-//                }
-//            }
-//            catch ResponseError.InvalidResponseCode(let reason) {
-//                print(reason ?? "")
-//            }
-//            catch {
-//                print(error)
-//            }
-//        }
+        let userInfo = ["email": "test6@mail.com",
+                        "password": "STar1234"]
+
+        UserManager.shared.login(userInfo) { (result) in
+            do {
+                if let user = try result.unwrap() as? User {
+                    print(user.email)
+                }
+            }
+            catch ResponseError.InvalidResponseCode(let reason) {
+                print(reason ?? "")
+            }
+            catch {
+                print(error)
+            }
+        }
         
-        UserManager.shared.logout()
+        //UserManager.shared.logout()
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7402711A1FCE6CB4002C3AE6 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740271191FCE6CB4002C3AE6 /* Idea.swift */; };
 		740B3D4F1FBD387400CB4D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D4E1FBD387400CB4D3F /* AppDelegate.swift */; };
 		740B3D541FBD387400CB4D3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B3D521FBD387400CB4D3F /* Main.storyboard */; };
 		740B3D561FBD387400CB4D3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 740B3D551FBD387400CB4D3F /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		740271191FCE6CB4002C3AE6 /* Idea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
 		740B3D4B1FBD387400CB4D3F /* Idea Pool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Idea Pool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		740B3D4E1FBD387400CB4D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		740B3D531FBD387400CB4D3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				740B3D671FBD3EE600CB4D3F /* User.swift */,
+				740271191FCE6CB4002C3AE6 /* Idea.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */,
 				740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */,
 				74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */,
+				7402711A1FCE6CB4002C3AE6 /* Idea.swift in Sources */,
 				74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */,
 				74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */,
 				740B3D611FBD38FB00CB4D3F /* TracksVC.swift in Sources */,

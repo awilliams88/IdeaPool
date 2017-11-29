@@ -41,7 +41,7 @@ struct Constants {
     }
     
     // Keys : Value matches to server response keys
-    struct Keys {
+    struct ResponseKeys {
         static let AccessToken = "jwt"
         static let RefreshToken = "refresh_token"
         static let TokenTimestamp = "token_timestamp"
