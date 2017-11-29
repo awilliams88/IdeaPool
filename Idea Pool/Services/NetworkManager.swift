@@ -30,16 +30,18 @@ class NetworkManager {
         
         // Set Request Header
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Check if access token exists
         if let accessToken = UserDefaults.standard.value(forKey: Constants.ResponseKeys.AccessToken) as? String {
             
             // Validate access token
             if isAccessTokenValid() == false {
                 
-                // Refresh access token
+                // Refresh invalid access token
                 refreshToken(for: { try? loadData(from: url.absoluteString, using: body, requestType: requestType, completion: completion) })
                 return
             } else {
-                // Set Access Token
+                // Set Access Token to request header
                 request.setValue("ACCESS_TOKEN=\(accessToken)", forHTTPHeaderField: "Cookie")
             }
         }
@@ -56,10 +58,9 @@ class NetworkManager {
         
         // Load Request
         let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
             completion(data, response, error)
-        })
-        task.resume()
+        }).resume()
     }
     
     // Validates Retrived Data and Response
@@ -76,17 +77,16 @@ class NetworkManager {
         
         do {
             // Create JSON
-            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                
-                // Validate response code
-                guard let statusCode = NetworkManager.statusCode(for: response), statusCode == responseCode.rawValue else {
-                    completion(Result.Failure(ResponseError.InvalidResponseCode(json.values.first)))
-                    return
-                }
-                
-                // Callback JSON
-                completion(Result.Success(json))
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            
+            // Validate response code
+            guard let statusCode = NetworkManager.statusCode(for: response), statusCode == responseCode.rawValue else {
+                completion(Result.Failure(ResponseError.InvalidResponseCode(json)))
+                return
             }
+            
+            // Callback JSON
+            completion(Result.Success(json))
         }
         catch {
             completion(Result.Failure(error))
@@ -117,34 +117,45 @@ class NetworkManager {
     // Refreshes access token and executes passed in closure
     static func refreshToken(for closure: @escaping () -> ()) {
         
-        // Guard resfreshToken token for request body
-        guard let resfreshToken = UserDefaults.standard.value(forKey: Constants.ResponseKeys.RefreshToken) else { return }
+        let urlString = Constants.URL.baseURL+Constants.EndPoints.RefreshAccessToken
         
-        // Construct request url and body
-        let url = Constants.URL.baseURL+Constants.EndPoints.RefreshAccessToken
+        // Guard url and tokens for request
+        guard let url  = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!),
+            let resfreshToken = UserDefaults.standard.value(forKey: Constants.ResponseKeys.RefreshToken),
+            let accessToken = UserDefaults.standard.value(forKey: Constants.ResponseKeys.AccessToken)
+            else { return }
+        
+        // Construct URL Request
+        var request = URLRequest(url: url)
+        request.httpMethod = Constants.RequestType.POST.rawValue
+        
+        // Request Body
         let body = ["refresh_token": resfreshToken]
-        do {
-            // Load Data
-            try NetworkManager.loadData(from: url, using: body, requestType: .POST, completion: { (data, response, error) in
-                
-                // Validate response
-                NetworkManager.validate(responseCode: .Ok, for: data,and: response, completion: { (result) in
-                    do {
-                        // Update token
-                        try NetworkManager.updateToken(for: result)
-                        
-                        // Execture closure
-                        closure()
-                    }
-                    catch {
-                        print(error.localizedDescription)
-                    }
-                })
+        let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        request.httpBody = jsonData
+        
+        // Set Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("ACCESS_TOKEN=\(accessToken)", forHTTPHeaderField: "Cookie")
+        
+        // Load Request
+        let session = URLSession.shared
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            // Validate response
+            NetworkManager.validate(responseCode: .Ok, for: data,and: response, completion: { (result) in
+                do {
+                    // Update token
+                    try NetworkManager.updateToken(for: result)
+                    
+                    // Execute closure
+                    closure()
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
             })
-        }
-        catch {
-            print(error.localizedDescription)
-        }
+        }).resume()
     }
     
     // Updates and Stores token in user defaults

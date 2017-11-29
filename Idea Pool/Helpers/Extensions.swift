@@ -30,20 +30,20 @@ extension Result {
     }
 }
 
+// Returns the total sum of all elements in the array
 extension Array where Element: Numeric {
-    /// Returns the total sum of all elements in the array
     var total: Element { return reduce(0, +) }
 }
 
+// Returns the average of all elements of interger type in the array
 extension Array where Element: BinaryInteger {
-    /// Returns the average of all elements in the array
     var average: Double {
         return isEmpty ? 0 : Double(Int(total)) / Double(count)
     }
 }
 
+// Returns the average of all elements of floating type in the array
 extension Array where Element: FloatingPoint {
-    /// Returns the average of all elements in the array
     var average: Element {
         return isEmpty ? 0 : total / Element(count)
     }

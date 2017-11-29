@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7402711A1FCE6CB4002C3AE6 /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740271191FCE6CB4002C3AE6 /* Idea.swift */; };
+		7402711C1FCE7451002C3AE6 /* IdeaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402711B1FCE7451002C3AE6 /* IdeaManager.swift */; };
 		740B3D4F1FBD387400CB4D3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D4E1FBD387400CB4D3F /* AppDelegate.swift */; };
 		740B3D541FBD387400CB4D3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B3D521FBD387400CB4D3F /* Main.storyboard */; };
 		740B3D561FBD387400CB4D3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 740B3D551FBD387400CB4D3F /* Assets.xcassets */; };
 		740B3D591FBD387400CB4D3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 740B3D571FBD387400CB4D3F /* LaunchScreen.storyboard */; };
-		740B3D611FBD38FB00CB4D3F /* TracksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D601FBD38FB00CB4D3F /* TracksVC.swift */; };
 		740B3D681FBD3EE600CB4D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D671FBD3EE600CB4D3F /* User.swift */; };
 		740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D6A1FBD440A00CB4D3F /* NetworkManager.swift */; };
 		740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D6D1FBD47E300CB4D3F /* Constants.swift */; };
@@ -26,13 +26,13 @@
 
 /* Begin PBXFileReference section */
 		740271191FCE6CB4002C3AE6 /* Idea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
+		7402711B1FCE7451002C3AE6 /* IdeaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaManager.swift; sourceTree = "<group>"; };
 		740B3D4B1FBD387400CB4D3F /* Idea Pool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Idea Pool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		740B3D4E1FBD387400CB4D3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		740B3D531FBD387400CB4D3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		740B3D551FBD387400CB4D3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		740B3D581FBD387400CB4D3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		740B3D5A1FBD387400CB4D3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		740B3D601FBD38FB00CB4D3F /* TracksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksVC.swift; sourceTree = "<group>"; };
 		740B3D671FBD3EE600CB4D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		740B3D6A1FBD440A00CB4D3F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		740B3D6D1FBD47E300CB4D3F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 		740B3D621FBD390400CB4D3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				740B3D601FBD38FB00CB4D3F /* TracksVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				7457830B1FBD7A2600D115FB /* DownloadManager.swift */,
+				7402711B1FCE7451002C3AE6 /* IdeaManager.swift */,
 				740B3D6A1FBD440A00CB4D3F /* NetworkManager.swift */,
 				74AA33BA1FCAA7430064B4DB /* UserManager.swift */,
 			);
@@ -236,11 +236,11 @@
 			files = (
 				740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */,
 				740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */,
+				7402711C1FCE7451002C3AE6 /* IdeaManager.swift in Sources */,
 				74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */,
 				7402711A1FCE6CB4002C3AE6 /* Idea.swift in Sources */,
 				74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */,
 				74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */,
-				740B3D611FBD38FB00CB4D3F /* TracksVC.swift in Sources */,
 				7413B44C1FCC0C4E002B080C /* Errors.swift in Sources */,
 				740B3D4F1FBD387400CB4D3F /* AppDelegate.swift in Sources */,
 				740B3D681FBD3EE600CB4D3F /* User.swift in Sources */,
