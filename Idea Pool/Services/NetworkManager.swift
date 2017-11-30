@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Network Manager services enable loading and parsing data from remote server
+// Network Manager services controls loading of data from remote server
 class NetworkManager {
     
     // Result handler closure

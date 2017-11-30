@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Extn. for Result Helper
 // Ref: https://gist.github.com/BlameOmar/ead32cfdf7a1c27a7b5a
@@ -46,5 +47,16 @@ extension Array where Element: BinaryInteger {
 extension Array where Element: FloatingPoint {
     var average: Element {
         return isEmpty ? 0 : total / Element(count)
+    }
+}
+
+// NSMutable Attributed String
+extension NSMutableAttributedString{
+    
+    func setColorForText(_ textToFind: String, with color: UIColor) {
+        let range = self.mutableString.range(of: textToFind, options: .caseInsensitive)
+        if range.location != NSNotFound {
+            addAttribute(.foregroundColor, value: color, range: range)
+        }
     }
 }

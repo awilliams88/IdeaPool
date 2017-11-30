@@ -21,6 +21,13 @@
 		74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BA1FCAA7430064B4DB /* UserManager.swift */; };
 		74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BD1FCC025F0064B4DB /* Extensions.swift */; };
 		74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BF1FCC0B890064B4DB /* Helpers.swift */; };
+		74B790F71FCFC08E006213DA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B790F61FCFC08E006213DA /* LoginVC.swift */; };
+		74B790FE1FCFC504006213DA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790F91FCFC503006213DA /* OpenSans-Bold.ttf */; };
+		74B790FF1FCFC504006213DA /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FA1FCFC503006213DA /* OpenSans-ExtraBold.ttf */; };
+		74B791001FCFC504006213DA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FB1FCFC503006213DA /* OpenSans-Regular.ttf */; };
+		74B791011FCFC504006213DA /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FC1FCFC504006213DA /* OpenSans-Light.ttf */; };
+		74B791021FCFC504006213DA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FD1FCFC504006213DA /* OpenSans-SemiBold.ttf */; };
+		74B791041FD03E42006213DA /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B791031FD03E42006213DA /* Utility.swift */; };
 		74E2AF0F1FC925A500D5DCEA /* JWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E2AF0E1FC925A500D5DCEA /* JWT.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +48,13 @@
 		74AA33BA1FCAA7430064B4DB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74AA33BD1FCC025F0064B4DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		74AA33BF1FCC0B890064B4DB /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		74B790F61FCFC08E006213DA /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		74B790F91FCFC503006213DA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		74B790FA1FCFC503006213DA /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		74B790FB1FCFC503006213DA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		74B790FC1FCFC504006213DA /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		74B790FD1FCFC504006213DA /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		74B791031FD03E42006213DA /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		74E2AF0E1FC925A500D5DCEA /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +103,7 @@
 		740B3D621FBD390400CB4D3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				74B790F61FCFC08E006213DA /* LoginVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -96,6 +111,7 @@
 		740B3D631FBD396600CB4D3F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				74B790F81FCFC4EE006213DA /* Fonts */,
 				740B3D521FBD387400CB4D3F /* Main.storyboard */,
 				740B3D551FBD387400CB4D3F /* Assets.xcassets */,
 				740B3D571FBD387400CB4D3F /* LaunchScreen.storyboard */,
@@ -131,8 +147,21 @@
 				7413B44B1FCC0C4E002B080C /* Errors.swift */,
 				74AA33BD1FCC025F0064B4DB /* Extensions.swift */,
 				74AA33BF1FCC0B890064B4DB /* Helpers.swift */,
+				74B791031FD03E42006213DA /* Utility.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		74B790F81FCFC4EE006213DA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				74B790F91FCFC503006213DA /* OpenSans-Bold.ttf */,
+				74B790FA1FCFC503006213DA /* OpenSans-ExtraBold.ttf */,
+				74B790FC1FCFC504006213DA /* OpenSans-Light.ttf */,
+				74B790FB1FCFC503006213DA /* OpenSans-Regular.ttf */,
+				74B790FD1FCFC504006213DA /* OpenSans-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		74E2AF0D1FC925A500D5DCEA /* Frameworks */ = {
@@ -205,7 +234,12 @@
 			files = (
 				740B3D591FBD387400CB4D3F /* LaunchScreen.storyboard in Resources */,
 				740B3D561FBD387400CB4D3F /* Assets.xcassets in Resources */,
+				74B791011FCFC504006213DA /* OpenSans-Light.ttf in Resources */,
+				74B790FE1FCFC504006213DA /* OpenSans-Bold.ttf in Resources */,
+				74B791021FCFC504006213DA /* OpenSans-SemiBold.ttf in Resources */,
 				740B3D541FBD387400CB4D3F /* Main.storyboard in Resources */,
+				74B791001FCFC504006213DA /* OpenSans-Regular.ttf in Resources */,
+				74B790FF1FCFC504006213DA /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,10 +270,12 @@
 			files = (
 				740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */,
 				740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */,
+				74B790F71FCFC08E006213DA /* LoginVC.swift in Sources */,
 				7402711C1FCE7451002C3AE6 /* IdeaManager.swift in Sources */,
 				74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */,
 				7402711A1FCE6CB4002C3AE6 /* Idea.swift in Sources */,
 				74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */,
+				74B791041FD03E42006213DA /* Utility.swift in Sources */,
 				74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */,
 				7413B44C1FCC0C4E002B080C /* Errors.swift in Sources */,
 				740B3D4F1FBD387400CB4D3F /* AppDelegate.swift in Sources */,
