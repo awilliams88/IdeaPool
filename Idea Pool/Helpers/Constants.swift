@@ -49,12 +49,12 @@ struct Constants {
     
     // Segues
     struct Segue {
-        static let showTrackDetailVC = "showTrackDetailVC"
+        static let showIdeasVC = "showIdeasVC"
     }
     
     // Label
     struct Label {
-        static let SignIn = "Sign In"
+        static let SignIn = "Log In"
         static let SignUp = "Sign Up"
         static let SignInInfo = "Already have an account? Log in"
         static let SignUpInfo = "Don’t have an account? Create an account"

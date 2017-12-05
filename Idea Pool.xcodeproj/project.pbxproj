@@ -16,19 +16,20 @@
 		740B3D681FBD3EE600CB4D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D671FBD3EE600CB4D3F /* User.swift */; };
 		740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D6A1FBD440A00CB4D3F /* NetworkManager.swift */; };
 		740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B3D6D1FBD47E300CB4D3F /* Constants.swift */; };
+		741170BE1FD137A60023829F /* IdeasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741170BD1FD137A60023829F /* IdeasVC.swift */; };
+		741170C41FD145150023829F /* IdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741170C21FD145150023829F /* IdeaCell.swift */; };
+		741170C51FD145150023829F /* IdeaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741170C31FD145150023829F /* IdeaCell.xib */; };
 		7413B44C1FCC0C4E002B080C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7413B44B1FCC0C4E002B080C /* Errors.swift */; };
+		7442E26B1FD663DA0049F8A4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74A194001FD27ED4005DDA6E /* OpenSans-Bold.ttf */; };
+		7442E26C1FD663DD0049F8A4 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74A194011FD27ED4005DDA6E /* OpenSans-Regular.ttf */; };
+		7442E26D1FD663E10049F8A4 /* SanFranciscoDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74A194031FD27ED4005DDA6E /* SanFranciscoDisplay-Regular.otf */; };
+		7442E26E1FD663E50049F8A4 /* SanFranciscoText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74A194021FD27ED4005DDA6E /* SanFranciscoText-Regular.otf */; };
 		7457830C1FBD7A2600D115FB /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457830B1FBD7A2600D115FB /* DownloadManager.swift */; };
 		74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BA1FCAA7430064B4DB /* UserManager.swift */; };
 		74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BD1FCC025F0064B4DB /* Extensions.swift */; };
 		74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BF1FCC0B890064B4DB /* Helpers.swift */; };
 		74B790F71FCFC08E006213DA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B790F61FCFC08E006213DA /* LoginVC.swift */; };
-		74B790FE1FCFC504006213DA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790F91FCFC503006213DA /* OpenSans-Bold.ttf */; };
-		74B790FF1FCFC504006213DA /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FA1FCFC503006213DA /* OpenSans-ExtraBold.ttf */; };
-		74B791001FCFC504006213DA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FB1FCFC503006213DA /* OpenSans-Regular.ttf */; };
-		74B791011FCFC504006213DA /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FC1FCFC504006213DA /* OpenSans-Light.ttf */; };
-		74B791021FCFC504006213DA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74B790FD1FCFC504006213DA /* OpenSans-SemiBold.ttf */; };
 		74B791041FD03E42006213DA /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B791031FD03E42006213DA /* Utility.swift */; };
-		74E2AF0F1FC925A500D5DCEA /* JWT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E2AF0E1FC925A500D5DCEA /* JWT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,19 +44,20 @@
 		740B3D671FBD3EE600CB4D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		740B3D6A1FBD440A00CB4D3F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		740B3D6D1FBD47E300CB4D3F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		741170BD1FD137A60023829F /* IdeasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasVC.swift; sourceTree = "<group>"; };
+		741170C21FD145150023829F /* IdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaCell.swift; sourceTree = "<group>"; };
+		741170C31FD145150023829F /* IdeaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaCell.xib; sourceTree = "<group>"; };
 		7413B44B1FCC0C4E002B080C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		7457830B1FBD7A2600D115FB /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		74A194001FD27ED4005DDA6E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		74A194011FD27ED4005DDA6E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		74A194021FD27ED4005DDA6E /* SanFranciscoText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Regular.otf"; sourceTree = "<group>"; };
+		74A194031FD27ED4005DDA6E /* SanFranciscoDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Regular.otf"; sourceTree = "<group>"; };
 		74AA33BA1FCAA7430064B4DB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74AA33BD1FCC025F0064B4DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		74AA33BF1FCC0B890064B4DB /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		74B790F61FCFC08E006213DA /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		74B790F91FCFC503006213DA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		74B790FA1FCFC503006213DA /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		74B790FB1FCFC503006213DA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		74B790FC1FCFC504006213DA /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		74B790FD1FCFC504006213DA /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "../../../../../Downloads/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		74B791031FD03E42006213DA /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		74E2AF0E1FC925A500D5DCEA /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74E2AF0F1FC925A500D5DCEA /* JWT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +93,7 @@
 			children = (
 				740B3D4E1FBD387400CB4D3F /* AppDelegate.swift */,
 				740B3D691FBD3EEC00CB4D3F /* Model */,
+				741170BF1FD144C10023829F /* View */,
 				740B3D621FBD390400CB4D3F /* Controller */,
 				740B3D6C1FBD440E00CB4D3F /* Services */,
 				74AA33BC1FCC02420064B4DB /* Helpers */,
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				74B790F61FCFC08E006213DA /* LoginVC.swift */,
+				741170BD1FD137A60023829F /* IdeasVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -140,6 +143,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		741170BF1FD144C10023829F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				741170C21FD145150023829F /* IdeaCell.swift */,
+				741170C31FD145150023829F /* IdeaCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		74AA33BC1FCC02420064B4DB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,11 +167,10 @@
 		74B790F81FCFC4EE006213DA /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				74B790F91FCFC503006213DA /* OpenSans-Bold.ttf */,
-				74B790FA1FCFC503006213DA /* OpenSans-ExtraBold.ttf */,
-				74B790FC1FCFC504006213DA /* OpenSans-Light.ttf */,
-				74B790FB1FCFC503006213DA /* OpenSans-Regular.ttf */,
-				74B790FD1FCFC504006213DA /* OpenSans-SemiBold.ttf */,
+				74A194001FD27ED4005DDA6E /* OpenSans-Bold.ttf */,
+				74A194011FD27ED4005DDA6E /* OpenSans-Regular.ttf */,
+				74A194031FD27ED4005DDA6E /* SanFranciscoDisplay-Regular.otf */,
+				74A194021FD27ED4005DDA6E /* SanFranciscoText-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -167,7 +178,6 @@
 		74E2AF0D1FC925A500D5DCEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				74E2AF0E1FC925A500D5DCEA /* JWT.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,7 +192,6 @@
 				740B3D471FBD387300CB4D3F /* Sources */,
 				740B3D481FBD387300CB4D3F /* Frameworks */,
 				740B3D491FBD387300CB4D3F /* Resources */,
-				74E2AF101FC925BE00D5DCEA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -201,7 +210,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = ePaisa;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					740B3D4A1FBD387300CB4D3F = {
 						CreatedOnToolsVersion = 9.0;
@@ -232,36 +241,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				741170C51FD145150023829F /* IdeaCell.xib in Resources */,
+				7442E26E1FD663E50049F8A4 /* SanFranciscoText-Regular.otf in Resources */,
 				740B3D591FBD387400CB4D3F /* LaunchScreen.storyboard in Resources */,
+				7442E26D1FD663E10049F8A4 /* SanFranciscoDisplay-Regular.otf in Resources */,
 				740B3D561FBD387400CB4D3F /* Assets.xcassets in Resources */,
-				74B791011FCFC504006213DA /* OpenSans-Light.ttf in Resources */,
-				74B790FE1FCFC504006213DA /* OpenSans-Bold.ttf in Resources */,
-				74B791021FCFC504006213DA /* OpenSans-SemiBold.ttf in Resources */,
+				7442E26B1FD663DA0049F8A4 /* OpenSans-Bold.ttf in Resources */,
+				7442E26C1FD663DD0049F8A4 /* OpenSans-Regular.ttf in Resources */,
 				740B3D541FBD387400CB4D3F /* Main.storyboard in Resources */,
-				74B791001FCFC504006213DA /* OpenSans-Regular.ttf in Resources */,
-				74B790FF1FCFC504006213DA /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		74E2AF101FC925BE00D5DCEA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/JWT.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/JWT.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		740B3D471FBD387300CB4D3F /* Sources */ = {
@@ -270,6 +261,7 @@
 			files = (
 				740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */,
 				740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */,
+				741170C41FD145150023829F /* IdeaCell.swift in Sources */,
 				74B790F71FCFC08E006213DA /* LoginVC.swift in Sources */,
 				7402711C1FCE7451002C3AE6 /* IdeaManager.swift in Sources */,
 				74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */,
@@ -277,6 +269,7 @@
 				74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */,
 				74B791041FD03E42006213DA /* Utility.swift in Sources */,
 				74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */,
+				741170BE1FD137A60023829F /* IdeasVC.swift in Sources */,
 				7413B44C1FCC0C4E002B080C /* Errors.swift in Sources */,
 				740B3D4F1FBD387400CB4D3F /* AppDelegate.swift in Sources */,
 				740B3D681FBD3EE600CB4D3F /* User.swift in Sources */,
@@ -419,16 +412,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YUEC6KT37S;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Idea Pool/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codementorX.ideaPool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -438,16 +428,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YUEC6KT37S;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Idea Pool/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codementorX.ideaPool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -10,7 +10,7 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-    // Mark: Properties
+    // MARK: Outlets
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var stackView: UIStackView!
@@ -20,12 +20,15 @@ class LoginVC: UIViewController {
     @IBOutlet weak var nameTxtFld: UITextField!
     @IBOutlet weak var emailTxtFld: UITextField!
     @IBOutlet weak var pswdTxtFld: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // Constraints
     
-    // Stack View Aspect Ratio constraints allows to maintain layout changes between login state changes
+    // Stack View Aspect Ratio constraints allows to maintain layout while changing login state
     @IBOutlet var stackViewAspectRatio0: NSLayoutConstraint!
     @IBOutlet var stackViewAspectRatio1: NSLayoutConstraint!
+    
+    // MARK: Properties
     
     // Enum for maintaining Login State
     enum LoginState: Int {
@@ -41,6 +44,13 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI(for: currentLoginState)
+        
+        // Check if user is already signed in
+        if UserDefaults.standard.value(forKey: Constants.ResponseKeys.AccessToken)  != nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                self.performSegue(withIdentifier: Constants.Segue.showIdeasVC, sender: self)
+            })
+        }
     }
     
     // Switches login state
@@ -76,9 +86,9 @@ class LoginVC: UIViewController {
             loginBtn.setTitle(Constants.Label.SignUp.uppercased(), for: .normal)
             
             // Info button
-            let attributedString = NSMutableAttributedString(string: Constants.Label.SignUpInfo)
-            attributedString.setColorForText("Don’t have an account?", with: UIColor(red: 42/255.0, green: 56/255.0, blue: 66/255.0, alpha: 1))
-            attributedString.setColorForText("Create an account", with: UIColor(red: 0/255.0, green: 168/255.0, blue: 67/255.0, alpha: 1))
+            let attributedString = NSMutableAttributedString(string: Constants.Label.SignInInfo)
+            attributedString.setColorForText("Already have an account?", with: UIColor(red: 42/255.0, green: 56/255.0, blue: 66/255.0, alpha: 1))
+            attributedString.setColorForText("Log in", with: UIColor(red: 0/255.0, green: 168/255.0, blue: 67/255.0, alpha: 1))
             infoBtn.setAttributedTitle(attributedString, for: .normal)
             
         case .SignIn:
@@ -97,53 +107,56 @@ class LoginVC: UIViewController {
             loginBtn.setTitle(Constants.Label.SignIn.uppercased(), for: .normal)
             
             // Info button
-            let attributedString = NSMutableAttributedString(string: Constants.Label.SignInInfo)
-            attributedString.setColorForText("Already have an account?", with: UIColor(red: 42/255.0, green: 56/255.0, blue: 66/255.0, alpha: 1))
-            attributedString.setColorForText("Log in", with: UIColor(red: 0/255.0, green: 168/255.0, blue: 67/255.0, alpha: 1))
+            let attributedString = NSMutableAttributedString(string: Constants.Label.SignUpInfo)
+            attributedString.setColorForText("Don’t have an account?", with: UIColor(red: 42/255.0, green: 56/255.0, blue: 66/255.0, alpha: 1))
+            attributedString.setColorForText("Create an account", with: UIColor(red: 0/255.0, green: 168/255.0, blue: 67/255.0, alpha: 1))
             infoBtn.setAttributedTitle(attributedString, for: .normal)
+        }
+    }
+    
+    // Handles result from completion handlers
+    func handle(result: Result<Any>) {
+        // Unlock UI
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            self.loginBtn.isEnabled = true
+        }
+        
+        do {
+            if let _ = try result.unwrap() as? User {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: Constants.Segue.showIdeasVC, sender: self)
+                }
+            }
+        }
+        catch ResponseError.InvalidResponseCode(let reason) {
+            print(reason ?? "Not Reason Found")
+            if let reason =  reason as? [String: String] {
+                Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "")
+            }
+        }
+        catch {
+            print(error)
         }
     }
     
     // Performs sign-up/sign-in operation as per current login state
     @IBAction func loginBtnPrsd(_ sender: UIButton) {
+        // Lock UI
+        spinner.startAnimating()
+        loginBtn.isEnabled = false
+        
         switch currentLoginState {
         case .SignUp:
             UserManager.shared.register(["name": nameTxtFld.text ?? "",
                                          "email": emailTxtFld.text ?? "",
                                          "password": pswdTxtFld.text ?? ""], completion: { (result) in
-                                            do {
-                                                if let user = try result.unwrap() as? User {
-                                                    print(user.email)
-                                                    // Sign Up Success
-                                                }
-                                            }
-                                            catch ResponseError.InvalidResponseCode(let reason) {
-                                                print(reason ?? "Not Reason Found")
-                                                if let reason =  reason as? [String: String] {
-                                                    Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "")
-                                                }
-                                            }
-                                            catch {
-                                                print(error)
-                                            }
+                                            self.handle(result: result)
             })
         case .SignIn:
             UserManager.shared.login(["email": emailTxtFld.text ?? "",
                                       "password": pswdTxtFld.text ?? ""], completion: { (result) in
-                                        do {
-                                            if let user = try result.unwrap() as? User {
-                                                print(user.email)
-                                                // Sign In Success
-                                            }
-                                        }
-                                        catch ResponseError.InvalidResponseCode(let reason) {
-                                            if let reason =  reason as? [String: String] {
-                                                Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "")
-                                            }
-                                        }
-                                        catch {
-                                            print(error)
-                                        }
+                                        self.handle(result: result)
             })
         }
     }

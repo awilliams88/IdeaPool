@@ -18,6 +18,8 @@ class Utility {
                           message: String ) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        vc.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            vc.present(alert, animated: true, completion: nil)
+        }
     }
 }
