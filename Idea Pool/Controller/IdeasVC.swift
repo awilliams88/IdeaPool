@@ -48,14 +48,6 @@ class IdeasVC: UIViewController {
         do {
             if let ideas = try result.unwrap() as? [Idea] {
                 self.ideas.append(contentsOf: ideas)
-                
-                // Update UI
-                DispatchQueue.main.async {
-                    if self.ideas.count > 0 {
-                        self.tableView.isHidden = false
-                        self.tableView.reloadData()
-                    }
-                }
             }
         }
         catch ResponseError.InvalidResponseCode(let reason) {
@@ -69,7 +61,13 @@ class IdeasVC: UIViewController {
         }
         
         // Update UI
-        DispatchQueue.main.async { self.spinner.stopAnimating() }
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            if self.ideas.count > 0 {
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // Log out
