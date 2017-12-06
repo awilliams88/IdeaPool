@@ -15,9 +15,12 @@ class Utility {
     // Present alert for VC
     static func showAlert(for vc: UIViewController,
                           title: String,
-                          message: String ) {
+                          message: String,
+                          actions: [UIAlertAction]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        for action in actions {
+            alert.addAction(action)
+        }
         DispatchQueue.main.async {
             vc.present(alert, animated: true, completion: nil)
         }

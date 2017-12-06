@@ -83,14 +83,14 @@
                                 <color key="textColor" red="0.1647058824" green="0.21960784310000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-rM-W24">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-rM-W24">
                                 <rect key="frame" x="278" y="12" width="8" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="BDY-j8-fTq"/>
                                     <constraint firstAttribute="height" constant="16" id="VCF-6S-iKq"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brl-6t-HrK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brl-6t-HrK">
                                 <rect key="frame" x="274" y="12" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="brl-6t-HrK" secondAttribute="height" id="5rd-3X-Dyd"/>
@@ -153,6 +153,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="share" width="32" height="32"/>
+        <image name="Share" width="32" height="32"/>
     </resources>
 </document>

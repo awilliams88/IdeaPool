@@ -28,6 +28,7 @@
 		74AA33BB1FCAA7430064B4DB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BA1FCAA7430064B4DB /* UserManager.swift */; };
 		74AA33BE1FCC025F0064B4DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BD1FCC025F0064B4DB /* Extensions.swift */; };
 		74AA33C01FCC0B890064B4DB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AA33BF1FCC0B890064B4DB /* Helpers.swift */; };
+		74B6D07B1FD790F900D9F7C2 /* IdeaEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B6D07A1FD790F900D9F7C2 /* IdeaEditorVC.swift */; };
 		74B790F71FCFC08E006213DA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B790F61FCFC08E006213DA /* LoginVC.swift */; };
 		74B791041FD03E42006213DA /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B791031FD03E42006213DA /* Utility.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		74AA33BA1FCAA7430064B4DB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		74AA33BD1FCC025F0064B4DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		74AA33BF1FCC0B890064B4DB /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		74B6D07A1FD790F900D9F7C2 /* IdeaEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaEditorVC.swift; sourceTree = "<group>"; };
 		74B790F61FCFC08E006213DA /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		74B791031FD03E42006213DA /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			children = (
 				74B790F61FCFC08E006213DA /* LoginVC.swift */,
 				741170BD1FD137A60023829F /* IdeasVC.swift */,
+				74B6D07A1FD790F900D9F7C2 /* IdeaEditorVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B6D07B1FD790F900D9F7C2 /* IdeaEditorVC.swift in Sources */,
 				740B3D6E1FBD47E300CB4D3F /* Constants.swift in Sources */,
 				740B3D6B1FBD440A00CB4D3F /* NetworkManager.swift in Sources */,
 				741170C41FD145150023829F /* IdeaCell.swift in Sources */,

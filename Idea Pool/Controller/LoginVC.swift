@@ -116,12 +116,6 @@ class LoginVC: UIViewController {
     
     // Handles result from completion handlers
     func handle(result: Result<Any>) {
-        // Unlock UI
-        DispatchQueue.main.async {
-            self.spinner.stopAnimating()
-            self.loginBtn.isEnabled = true
-        }
-        
         do {
             if let _ = try result.unwrap() as? User {
                 DispatchQueue.main.async {
@@ -132,11 +126,18 @@ class LoginVC: UIViewController {
         catch ResponseError.InvalidResponseCode(let reason) {
             print(reason ?? "Not Reason Found")
             if let reason =  reason as? [String: String] {
-                Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "")
+                let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+                Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "", actions: [okAction])
             }
         }
         catch {
             print(error)
+        }
+        
+        // Update UI
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            self.loginBtn.isEnabled = true
         }
     }
     
@@ -150,14 +151,10 @@ class LoginVC: UIViewController {
         case .SignUp:
             UserManager.shared.register(["name": nameTxtFld.text ?? "",
                                          "email": emailTxtFld.text ?? "",
-                                         "password": pswdTxtFld.text ?? ""], completion: { (result) in
-                                            self.handle(result: result)
-            })
+                                         "password": pswdTxtFld.text ?? ""], completion: { (result) in self.handle(result: result) })
         case .SignIn:
             UserManager.shared.login(["email": emailTxtFld.text ?? "",
-                                      "password": pswdTxtFld.text ?? ""], completion: { (result) in
-                                        self.handle(result: result)
-            })
+                                      "password": pswdTxtFld.text ?? ""], completion: { (result) in self.handle(result: result) })
         }
     }
 

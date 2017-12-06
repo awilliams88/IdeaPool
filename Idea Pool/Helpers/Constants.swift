@@ -50,6 +50,8 @@ struct Constants {
     // Segues
     struct Segue {
         static let showIdeasVC = "showIdeasVC"
+        static let showIdeaEditorVC = "showIdeaEditorVC"
+        static let unwindToIdeasVC = "unwindToIdeasVC"
     }
     
     // Label
@@ -58,6 +60,8 @@ struct Constants {
         static let SignUp = "Sign Up"
         static let SignInInfo = "Already have an account? Log in"
         static let SignUpInfo = "Don’t have an account? Create an account"
+        static let deleleAlertTitle = "Are you sure?"
+        static let deleleAlertMessage = "This idea will be permanently deleted."
     }
 }
 

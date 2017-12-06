@@ -16,6 +16,7 @@ class IdeasVC: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: Properties
+    
     var ideas =  [Idea]()
 
     // MARK: Methods
@@ -47,11 +48,20 @@ class IdeasVC: UIViewController {
         do {
             if let ideas = try result.unwrap() as? [Idea] {
                 self.ideas.append(contentsOf: ideas)
+                
+                // Update UI
+                DispatchQueue.main.async {
+                    if self.ideas.count > 0 {
+                        self.tableView.isHidden = false
+                        self.tableView.reloadData()
+                    }
+                }
             }
         }
         catch ResponseError.InvalidResponseCode(let reason) {
             if let reason =  reason as? [String: String] {
-                Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "")
+                let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+                Utility.showAlert(for: self, title: reason.keys.first ?? "", message: reason.values.first ?? "", actions: [okAction])
             }
         }
         catch {
@@ -59,13 +69,7 @@ class IdeasVC: UIViewController {
         }
         
         // Update UI
-        DispatchQueue.main.async {
-            self.spinner.stopAnimating()
-            if self.ideas.count > 0 {
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-            }
-        }
+        DispatchQueue.main.async { self.spinner.stopAnimating() }
     }
     
     // Log out
@@ -73,18 +77,41 @@ class IdeasVC: UIViewController {
         UserManager.shared.logout()
         dismiss(animated: true, completion: nil)
     }
+    
+    // Add Idea
+    @IBAction func addIdeaBtnPrsd(_ sender: UIButton) {
+        performSegue(withIdentifier: Constants.Segue.showIdeaEditorVC, sender: self)
+    }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Segue.showIdeaEditorVC {
+            if let idea = sender as? Idea {
+                let dvc = segue.destination as! IdeaEditorVC
+                dvc.idea = idea
+            }
+        }
+    }
+    
+    @IBAction func unwindToIdeasVC(segue:UIStoryboardSegue) {
+        if segue.identifier == Constants.Segue.unwindToIdeasVC {
+            let svc = segue.source as? IdeaEditorVC
+            
+            // Update ideas collection for newly created or edited idea
+            if let idea = svc?.idea {
+                if let index = ideas.index(where: { $0.id == idea.id }) {
+                    ideas[index] = idea
+                } else {
+                    ideas.insert(idea, at: 0)
+                }
+                tableView.reloadData()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    deinit {
-        print("DE-INIT")
     }
 }
 
@@ -115,25 +142,43 @@ extension IdeasVC: UITableViewDataSource, UITableViewDelegate, IdeaCellDelegate 
     
     func didSelected(_ idea: Idea) {
         let actionSheet = UIAlertController(title: "Action", message: nil, preferredStyle: .actionSheet)
+        
+        // Edit
         actionSheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action) in
-            print("EDIT")
-            // TODO : Segue to IdeaEditorVC
+            self.performSegue(withIdentifier: Constants.Segue.showIdeaEditorVC, sender: idea)
         }))
+        
+        // Delete
         actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action) in
-            self.spinner.startAnimating()
-            IdeaManager.shared.delete(idea, completion: { (result) in
-                
-                // Removed delete idea from collection
-                if let index = self.ideas.index(where: { $0.id == idea.id }) {
-                    self.ideas.remove(at: index)
-                }
-                
-                // Handle completion handler result
-                self.handle(result: result)
+            
+            // OK Action
+            let okAction = UIAlertAction(title: "Ok", style: .destructive, handler: { (action) in
+                self.spinner.startAnimating()
+                IdeaManager.shared.delete(idea, completion: { (result) in
+                    
+                    // Removed deleted idea from collection
+                    if let index = self.ideas.index(where: { $0.id == idea.id }) {
+                        self.ideas.remove(at: index)
+                    }
+                    
+                    // Handle completion handler result
+                    self.handle(result: result)
+                })
             })
+            
+            // Cancel Action
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+            
+            // Show Alert
+            Utility.showAlert(for: self, title: Constants.Label.deleleAlertTitle,
+                              message: Constants.Label.deleleAlertMessage,
+                              actions: [okAction, cancelAction])
         }))
+        
+        // Cancel
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
 }
