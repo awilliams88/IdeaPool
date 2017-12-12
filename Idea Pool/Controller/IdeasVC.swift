@@ -63,10 +63,8 @@ class IdeasVC: UIViewController {
         // Update UI
         DispatchQueue.main.async {
             self.spinner.stopAnimating()
-            if self.ideas.count > 0 {
-                self.tableView.isHidden = false
-                self.tableView.reloadData()
-            }
+            self.tableView.isHidden = (self.ideas.count > 0 ? false : true)
+            self.tableView.reloadData()
         }
     }
     
@@ -103,6 +101,9 @@ class IdeasVC: UIViewController {
                 } else {
                     ideas.insert(idea, at: 0)
                 }
+                
+                // Update UI
+                tableView.isHidden = (self.ideas.count > 0 ? false : true)
                 tableView.reloadData()
             }
         }
